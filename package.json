@@ -1,0 +1,19 @@
+{
+  "name": "youtube",
+  "version": "1.0.0",
+  "description": "YouTube API",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server"
+  },
+  "author": "Sultan Jarrar",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
