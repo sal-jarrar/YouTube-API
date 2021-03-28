@@ -8,22 +8,25 @@ route.get('/youtube', fetchData, (req, res) => {
   const limit = parseInt(req.query.limit)
   const startIndex = (page - 1) * limit
   const endIndex = page * limit
+  const youtubeAPI = {}
   let results = req.results
-  if (startIndex < results.length) {
-    results.next = {
+  console.log(results.length)
+  if (endIndex < results.length) {
+    youtubeAPI.next = {
       page: page + 1,
       limit,
     }
   }
-  if (endIndex > 0) {
-    results.next = {
+  if (startIndex > 0) {
+    youtubeAPI.prev = {
       page: page - 1,
       limit,
     }
   }
+  youtubeAPI.totalLength = results.length
+  youtubeAPI.results = results.slice(startIndex, endIndex)
 
-  results = results.slice(startIndex, endIndex)
-  res.json(results)
+  res.json(youtubeAPI)
 })
 
 export default route
